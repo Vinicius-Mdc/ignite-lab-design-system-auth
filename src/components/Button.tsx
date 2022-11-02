@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import { clsx } from 'clsx'
 import { Slot } from '@radix-ui/react-slot';
+import { ClipLoader } from 'react-spinners';
 
 export interface ButtonIconProps{
   children: ReactNode
@@ -18,9 +19,10 @@ export interface ButtonTextProps{
   size?: 'sm' | 'md' | 'lg'
   children: React.ReactNode
   asChild?: boolean
+  loading?: boolean
 }
 
-const ButtonText = ({size='md', children, asChild}:ButtonTextProps) => {
+const ButtonText = ({size='md', children, asChild, loading}:ButtonTextProps) => {
 const Comp = asChild ? Slot : 'span'
 return (
   <Comp className={
@@ -31,7 +33,7 @@ return (
       'text-lg': size === 'lg'
     })}
   >
-    {children}
+    {loading ? <ClipLoader size='16' /> : children}
   </Comp>
 );
 }

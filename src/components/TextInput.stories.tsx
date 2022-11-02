@@ -7,10 +7,12 @@ export default {
     component: TextInput.Root,
     args: {
         children: [
+            <TextInput.Wrapper>
                 <TextInput.Icon>
                     <Envelope /> 
                 </TextInput.Icon>,
                 <TextInput.Input placeholder="Write anything..." />
+            </TextInput.Wrapper>
         ]
     },
     argTypes: {
@@ -27,7 +29,20 @@ export const Default: StoryObj = {}
 export const NoIcon: StoryObj = {
     args: {
         children: [
-            <TextInput.Input placeholder="Write anything..." />
+            <TextInput.Wrapper>
+                <TextInput.Input placeholder="Write anything..." />
+            </TextInput.Wrapper>
+        ]
+    },
+}
+
+export const WithError: StoryObj = {
+    args: {
+        children: [
+            <TextInput.Wrapper error>
+                <TextInput.Input placeholder="Write anything..." />
+            </TextInput.Wrapper>,
+            <TextInput.Error>This is an error</TextInput.Error>
         ]
     },
 }

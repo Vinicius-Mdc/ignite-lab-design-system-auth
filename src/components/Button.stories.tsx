@@ -28,3 +28,13 @@ export const WithIcon: StoryObj = {
         ]
     }
 }
+
+export const Loading: StoryObj = {
+    args: {
+        children: [
+            <Button.Text loading>
+                Confirm
+            </Button.Text>
+        ]
+    }
+}

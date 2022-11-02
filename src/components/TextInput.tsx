@@ -22,7 +22,20 @@ export interface TextInputRootProps{
 
 const TextInputRoot = (props:TextInputRootProps) => {
   return (
-    <div className='flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-800 w-full focus-within:ring-2 ring-cyan-300'>
+    <div className={``}>
+      {props.children}
+    </div>
+  )
+}
+
+export interface TextInputWrapperProps{
+  children: ReactNode
+  error?: boolean
+}
+
+const TextInputWrapper = (props:TextInputWrapperProps) => {
+  return (
+    <div className={`flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-800 w-full ${props.error && 'ring-2 ring-red-500'} border-red-500 focus-within:ring-2 focus-within:ring-cyan-300`}>
       {props.children}
     </div>
   )
@@ -38,10 +51,29 @@ const TextInputInput = (props:TextInputInputProps) => {
   );
 }
 
+export interface TextInputErrorProps{
+  children: React.ReactNode
+  asChild?: boolean
+  className?: string
+}
+
+const TextInputError = ({children, asChild, className}:TextInputErrorProps) => {
+  const Comp = asChild ? Slot : 'span'
+  return (
+    <Comp className={
+      clsx('text-red-500 font-sans text-sm', className)}
+    >
+      {children}
+    </Comp>
+  );
+}
+
 TextInputInput.displayName = 'TextInput.Input'
 
 export const TextInput = {
   Root: TextInputRoot,
+  Wrapper: TextInputWrapper,
   Input: TextInputInput,
   Icon: TextInputIcon,
+  Error: TextInputError
 }
