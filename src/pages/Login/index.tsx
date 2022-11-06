@@ -1,5 +1,6 @@
 import { Envelope, Lock } from 'phosphor-react';
 import React, { FormEvent, MouseEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Checkbox } from '../../components/Checkbox';
 import { Heading } from '../../components/Heading';
@@ -15,6 +16,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [apiError, setApiError] = useState('')
+  const navigate = useNavigate();
 
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
@@ -26,6 +28,7 @@ const Login: React.FC = () => {
       setPasswordError('Senha muito curta')
     }
     setLoading(false)
+    navigate('/')
   }
 
   return (
@@ -85,7 +88,7 @@ const Login: React.FC = () => {
           <a className="text-gray-400 underline hover:text-gray-200 cursor-pointer">Esqueceu sua senha?</a>
         </Text>
         <Text asChild size='sm'>
-          <a className="text-gray-400 underline hover:text-gray-200 cursor-pointer">Não possui conta? Crie uma agora!</a>
+          <a href='/register' className="text-gray-400 underline hover:text-gray-200 cursor-pointer">Não possui conta? Crie uma agora!</a>
         </Text>
       </footer>
     </div>
