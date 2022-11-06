@@ -56,6 +56,9 @@ module.exports = {
       },
       screens: {
         'md-h': { 'raw': '(max-height: 640px)' },
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
       }
     },
   },
