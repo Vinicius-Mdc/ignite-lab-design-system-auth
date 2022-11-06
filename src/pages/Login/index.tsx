@@ -16,7 +16,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [apiError, setApiError] = useState('')
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLogin = (e: FormEvent) => {
     e.preventDefault()
